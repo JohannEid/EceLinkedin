@@ -16,6 +16,45 @@
 
 
     <title>Admin</title>
+
+    <script>
+
+        var error = "";
+
+        function verifyContent() {
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var email = document.getElementById("email").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var confirm = document.getElementById("confirm").value;
+
+            if(password != confirm){
+                error = "Your 2nd password does not correspond to the first one !";
+            } else {
+                if (fname=="")
+                    error = "Your First name is empty\n";
+                if (lname=="")
+                    error += "Your Last name is empty\n";
+                if (email=="")
+                    error += "Your Email is empty\n";
+                if (username=="")
+                    error += "Your Username is empty\n";
+                if (password=="")
+                    error += "Your Password is empty\n";
+                if (confirm=="")
+                    error += "Your Password confirmation  is empty";
+            }
+
+            if(error != "")
+                alert(error);
+        }
+
+
+
+    </script>
+    
+    
 </head>
 <body>
 
@@ -48,11 +87,21 @@
             <form class="form-horizontal" method="post" action="#">
 
                 <div class="form-group">
-                    <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                    <label for="fname" class="cols-sm-2 control-label">Your First Name</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+                            <input type="text" class="form-control" name="fname" id="fname"  placeholder="Enter your First Name"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lname" class="cols-sm-2 control-label">Your Last Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="lname" id="lname"  placeholder="Enter your Last Name"/>
                         </div>
                     </div>
                 </div>
@@ -98,7 +147,7 @@
                 </div>
 
                 <div class="form-group ">
-                    <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block login-button" onclick="verifyContent()">Register</button>
                 </div>
                 <div class="login-register">
                     <a href="signin.html">Login</a>
