@@ -16,6 +16,46 @@
 
 
     <title>Admin</title>
+
+    <script>
+
+        var error;
+
+        var mail = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g);
+
+        function isEmpty(email,password) {
+
+            if (email=="")
+                error += "Your Email is empty\n";
+            if (password=="")
+                error += "Your Password is empty\n";
+
+            if(error != "")
+                alert(error);
+        }
+
+        function isCorrect(email) {
+
+            if (!mail.test(email))
+                error += "Your Email is invalid\n";
+
+            if(error != "")
+                alert(error);
+        }
+
+        function verifyContent() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            error = "";
+
+            isEmpty(email,password);
+
+            if(error=="")
+                isCorrect(email);
+        }
+
+    </script>
 </head>
 <body>
 
@@ -69,7 +109,7 @@
 
 
                 <div class="form-group ">
-                    <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block login-button" onclick="verifyContent()">Register</button>
                 </div>
                 <div class="register">
                     <a href="signup.html">Register</a>
