@@ -53,6 +53,12 @@
 
             if(error=="")
                 isCorrect(email);
+
+            if(error == ""){
+                return true;
+            } else {
+                return false;
+            }
         }
 
     </script>
@@ -85,7 +91,7 @@
             </div>
         </div>
         <div class="main-login main-center">
-            <form class="form-horizontal" method="post" action="#">
+            <form class="form-horizontal" method="post" onsubmit="return verifyContent()" action="signin.php">
 
                 <div class="form-group">
                     <label for="email" class="cols-sm-2 control-label">Your Email</label>
@@ -109,7 +115,7 @@
 
 
                 <div class="form-group ">
-                    <button type="button" class="btn btn-primary btn-lg btn-block login-button" onclick="verifyContent()">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                 </div>
                 <div class="register">
                     <a href="signup.html">Register</a>
