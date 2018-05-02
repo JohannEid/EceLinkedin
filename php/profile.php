@@ -1,6 +1,6 @@
 <?php
-
-
+include('signin.php');
+echo $id;
 $database = "meetece";
 $host = '127.0.0.1:8889';
 $login = 'root';
@@ -12,7 +12,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM user";
+$sql = "SELECT * FROM user WHERE IDuser =  '$id'";
+
+echo "alert(".$sql.");";
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -36,7 +39,7 @@ if ($result->num_rows > 0) {
 
 
 } else {
-    echo "0 results";
+
 }
 
 $conn->close();

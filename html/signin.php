@@ -1,8 +1,7 @@
 <?php
-echo "Connexion successful";
 
 
-define('DB_ADRESS', 'localhost:63342');
+define('DB_ADRESS', 'localhost:8889');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', 'root');
 define('DB_DATABASE', 'meetece');
@@ -19,25 +18,25 @@ if (mysqli_connect_errno())
 $myusername = mysqli_real_escape_string($db,$_POST['email']);
 $mypassword = mysqli_real_escape_string($db,$_POST['password']);
 
-$sql = "SELECT id FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
+$sql = "SELECT IDuser FROM user WHERE email = '$myusername' AND password = '$mypassword'";
 $result = mysqli_query($db,$sql);
 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 $active = $row['active'];
+$ID = $row["IDuser"];
 
 $count = mysqli_num_rows($result);
 
 
 // If result matched $myusername and $mypassword, table row must be 1 row
-
+$id = $ID;
 if($count == 1) {
     $_SESSION['login_user'] = $myusername;
 
-    echo "Connexion successful";
-    header("location: welcome.php");
+    header('Location: profile.php');
 }
 
 else
-    {
+{
     $error = "Your Login Name or Password is invalid";
 }
 
