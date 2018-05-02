@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(100) NOT NULL,
   `photo` blob,
   `statue` enum('license','master','apprentice','school_employee') NOT NULL,
-  `job_search` enum('intership_search','job_search','no_search') NOT NULL,
+  `job_search` enum('intership_search','job_search','no_search') DEFAULT 'no_search' NOT NULL,
   `type` enum('admin','user') NOT NULL,
   `pseudo` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,

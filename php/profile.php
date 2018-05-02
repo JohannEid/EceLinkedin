@@ -1,3 +1,52 @@
+<?php
+
+
+$database = "meetece";
+$host = '127.0.0.1:8889';
+$login = 'root';
+$passwordDTB = 'root';
+
+$conn = new mysqli($host,$login,$passwordDTB,$database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM user";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $ID = $row["IDuser"];
+        $email = $row["email"];
+        $photo = $row["photo"];
+        $statute = $row["statue"];
+        $job = $row["job_search"];
+        $type = $row["type"];
+        $username = $row["pseudo"];
+        $name = $row["name"];
+        $fname = $row["firstname"];
+        $password = $row["password"];
+        $photoBack = $row["photo_background"];
+        $age = $row["age"];
+
+    }
+
+
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +63,35 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
-    <link rel="stylesheet" type="text/css" href="../css/profile.css">
+    <link rel="stylesheet" type="text/css" href="profile.css">
 
 
+    <script type="text/javascript" >
+
+        var id= "<?php Print($ID); ?>";
+        var email= "<?php Print($email); ?>";
+        var photo= "<?php Print($photo); ?>";
+        var statute= "<?php Print($statute); ?>";
+        var job= "<?php Print($job); ?>";
+        var type= "<?php Print($type); ?>";
+        var username= "<?php Print($username); ?>";
+        var name= "<?php Print($name); ?>";
+        var fname= "<?php Print($fname); ?>";
+        var password= "<?php Print($password); ?>";
+        var photoBack= "<?php Print($photoBack); ?>";
+        var age= "<?php Print($age); ?>";
+
+
+        window.onload = function() {
+
+            document.getElementById("completeName").innerHTML = fname + " " + name;
+        }
+
+
+        alert(name + fname);
+
+
+    </script>
 
 </head>
 <body>
@@ -30,7 +105,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="index.html">Home</a></li>
-            <li class="active"><a href="profile.html">Profile</a></li>
+            <li class="active"><a href="profile.php">Profile</a></li>
             <li><a href="jobs.html">Jobs</a></li>
             <li><a href="messenger.html">Messenger</a></li>
             <li><a href="network.html">Network</a></li>
@@ -72,12 +147,12 @@
             <div class="panel panel-default">
                 <div class="userprofile social ">
                     <div class="userpic"> <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="userpicimg"> </div>
-                    <h3 class="username">Lucky Sans</h3>
+                    <h3 class="username"><label type="text" id="completeName" name="completeName" ></h3>
                     <p>Gujarat, India</p>
                     <div class="socials tex-center"> <a href="" class="btn btn-circle btn-primary ">
-                        <i class="fa fa-facebook"></i></a> <a href="" class="btn btn-circle btn-danger ">
-                        <i class="fa fa-google-plus"></i></a> <a href="" class="btn btn-circle btn-info ">
-                        <i class="fa fa-twitter"></i></a> <a href="" class="btn btn-circle btn-warning "><i class="fa fa-envelope"></i></a>
+                            <i class="fa fa-facebook"></i></a> <a href="" class="btn btn-circle btn-danger ">
+                            <i class="fa fa-google-plus"></i></a> <a href="" class="btn btn-circle btn-info ">
+                            <i class="fa fa-twitter"></i></a> <a href="" class="btn btn-circle btn-warning "><i class="fa fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="col-md-12 border-top border-bottom">
@@ -147,7 +222,7 @@
                     </div>
                     <div class="media">
                         <div class="media-left"> <a href="javascript:void(0)">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
                         <div class="media-body">
                             <h4 class="media-heading">John Doe</h4>
                             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </div>
@@ -162,18 +237,18 @@
                 </div>
                 <div class="col-md-12">
                     <div class="memberblock"> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
-                        <div class="memmbername">Ajay Sriram</div>
-                    </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                        <div class="memmbername">Rajesh Sriram</div>
-                    </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                        <div class="memmbername">Manish Sriram</div>
-                    </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                        <div class="memmbername">Chandra Amin</div>
-                    </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                        <div class="memmbername">John Sriram</div>
-                    </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                        <div class="memmbername">Lincoln Sriram</div>
-                    </a> </div>
+                            <div class="memmbername">Ajay Sriram</div>
+                        </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                            <div class="memmbername">Rajesh Sriram</div>
+                        </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                            <div class="memmbername">Manish Sriram</div>
+                        </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                            <div class="memmbername">Chandra Amin</div>
+                        </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                            <div class="memmbername">John Sriram</div>
+                        </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                            <div class="memmbername">Lincoln Sriram</div>
+                        </a> </div>
                 </div>
                 <div class="clearfix"></div>
             </div>
