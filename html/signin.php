@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 define('DB_ADRESS', 'localhost:8889');
 define('DB_USERNAME', 'root');
@@ -28,9 +29,10 @@ $count = mysqli_num_rows($result);
 
 
 // If result matched $myusername and $mypassword, table row must be 1 row
-$id = $ID;
 if($count == 1) {
     $_SESSION['login_user'] = $myusername;
+    $_SESSION['id'] = $ID;
+
 
     header('Location: profile.php');
 }

@@ -1,6 +1,6 @@
 <?php
-include('signin.php');
-echo $id;
+session_start();
+$id =   $_SESSION['id'];
 $database = "meetece";
 $host = '127.0.0.1:8889';
 $login = 'root';
@@ -13,8 +13,6 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT * FROM user WHERE IDuser =  '$id'";
-
-echo "alert(".$sql.");";
 
 $result = $conn->query($sql);
 
@@ -88,6 +86,7 @@ $conn->close();
         window.onload = function() {
 
             document.getElementById("completeName").innerHTML = fname + " " + name;
+            document.getElementById("details").innerHTML = "User: " + username + "   Mail: " + email;
         }
 
 
@@ -183,7 +182,9 @@ $conn->close();
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h1 class="page-header small">Personal Details</h1>
-                    <p class="page-subtitle small">Limited information is visible</p>
+                    <p class="page-subtitle small">
+                        <label type="text" id="details" name="details" >
+                    </p>
                 </div>
                 <div class="col-md-12 photolist">
                     <div class="row">
