@@ -13,30 +13,24 @@ $username = isset($_POST["username"])? $_POST["username"] : "";
 $password = isset($_POST["password"])? $_POST["password"] : "";
 
 
-$database = "MeetECE";
+$database = "meetece";
 $host = '127.0.0.1:8889';
 $login = 'root';
 $passwordDTB = 'root';
 
-$db_handle = mysqli_connect($host,$login,$passwordDTB);
-$db_found = mysqli_select_db($db_handle, $database);
+$conn = new mysqli($host,$login,$passwordDTB,$database);
 
-if($db_found){
-    //$sql = "SELECT * FROM membre ORDER BY Prenom DESC ";
-    //$sql = "SELECT * FROM membre ORDER BY Prenom LIKE '%J%'";
-    $sql = "SELECT * FROM membre WHERE Prenom LIKE 'G%'";
-
-
-    $result = mysqli_query($db_handle, $sql);
-
-    while ($data = mysqli_fetch_assoc($result)){
-        echo "ID : " . $data['ID'] . '<br>';
-        echo "Nom : " . $data['Nom'] . '<br>';
-        echo "Prénom : " . $data['Prenom'] . '<br>';
-        echo "Statut : " . $data['Statut'] . '<br>';
-        echo "Date de Naissance : " . $data['DateNaissance'] . '<br>';
-    }
-
-} else {
-    echo "Database not found.";
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+$sql = "INSERT INTO user (firstname, name, email, pseudo, password)
+VALUES ($fname, $lname, $email, $username, $password)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
