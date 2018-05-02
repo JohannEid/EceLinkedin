@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Website CSS style -->
-    <link rel="stylesheet" type="text/css" href="css/signup.css">
+    <link rel="stylesheet" type="text/css" href="../css/signup.css">
 
     <!-- Website Font style -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -16,6 +16,75 @@
 
 
     <title>Admin</title>
+
+    <script>
+
+        var error;
+
+        var letters = new RegExp(/\D/g);
+        var mail = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g);
+
+        function isEmpty(fname,lname,email,username,password,confirmation) {
+
+            if(password != confirmation){
+                error = "Your 2nd password does not correspond to the first one !";
+            } else {
+                if (fname=="")
+                    error = "Your First name is empty\n";
+                if (lname=="")
+                    error += "Your Last name is empty\n";
+                if (email=="")
+                    error += "Your Email is empty\n";
+                if (username=="")
+                    error += "Your Username is empty\n";
+                if (password=="")
+                    error += "Your Password is empty\n";
+                if (confirmation=="")
+                    error += "Your Password confirmation  is empty";
+            }
+
+            if(error != "")
+                alert(error);
+        }
+
+        function isCorrect(fname,lname,email) {
+
+            if (!letters.test(fname))
+                error = "Your First name must contain letters only\n";
+            if (!letters.test(lname))
+                error += "Your Last name must contain letters only\n";
+            if (!mail.test(email))
+                error += "Your Email is invalid\n";
+
+            if(error != "")
+                alert(error);
+        }
+
+        function verifyContent() {
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var email = document.getElementById("email").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var confirmation = document.getElementById("confirm").value;
+
+            error = "";
+
+            isEmpty(fname,lname,email,username,password,confirmation);
+
+            if(error=="")
+                isCorrect(fname,lname,email);
+
+            if(error == ""){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    </script>
+
+
 </head>
 <body>
 
@@ -23,7 +92,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="index.html">
-                <img src="img/ece_logo.png">
+                <img src="../img/ece_logo.png">
             </a>
         </div>
         <ul class="nav navbar-nav">
@@ -45,14 +114,24 @@
             </div>
         </div>
         <div class="main-login main-center">
-            <form class="form-horizontal" method="post" action="#">
+            <form class="form-horizontal" method="post" onsubmit="return verifyContent()" action="signup.php">
 
                 <div class="form-group">
-                    <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                    <label for="fname" class="cols-sm-2 control-label">Your First Name</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+                            <input type="text" class="form-control" name="fname" id="fname"  placeholder="Enter your First Name"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lname" class="cols-sm-2 control-label">Your Last Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="lname" id="lname"  placeholder="Enter your Last Name"/>
                         </div>
                     </div>
                 </div>
@@ -98,7 +177,7 @@
                 </div>
 
                 <div class="form-group ">
-                    <button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                 </div>
                 <div class="login-register">
                     <a href="signin.html">Login</a>
