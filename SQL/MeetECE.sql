@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(100) NOT NULL,
   `photo` blob,
   `statue` enum('license','master','apprentice','school_employee') NOT NULL,
-  `job_search` enum('intership_search','job_search','no_search') DEFAULT 'no_search' NOT NULL,
+  `job_search` enum('internship_search','job_search','no_search') DEFAULT 'no_search' NOT NULL,
   `type` enum('admin','user') NOT NULL,
   `pseudo` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -41,6 +41,22 @@ CREATE TABLE IF NOT EXISTS `user` (
   `age` int(11),
   PRIMARY KEY(IDuser)
 );
+
+
+INSERT INTO user(IDuser,email,photo,statue,job_search,type,pseudo,name,firstname,password,photo_background,age)
+VALUES
+  (1,'thomas@gmail.com',null,'license','no_search','user','Tom','Cop','Thomas','Thomas',null,21),
+  (2,'johann@gmail.com',null,'master','no_search','user','Jo','Eid','Johann','Johann',null,21),
+  (3,'clement@gmail.com',null,'license','apprentice','user','Clem','Bail','Clement','Clement',null,22),
+  (4,'sophie@gmail.com',null,'school_employee','no_search','user','Soph','Lam','Sophie','Sophie',null,27),
+  (5,'garance@gmail.com',null,'master','job_search','user','Gar','Lautre','Garance','Garance',null,24),
+  (6,'julie@gmail.com',null,'license','internship_search','user','Jul','Dupont','Julie','Julie',null,23),
+  (7,'pierre@gmail.com',null,'license','no_search','user','Boloss','Berland','Pierre','Pierre',null,20),
+  (8,'myrna@gmail.com',null,'license','internship_search','user','lol','Wadi','Myrna','Myrna',null,21),
+  (9,'clara@gmail.com',null,'master','job_search','user','Cla','Tromelin','Clara','Clara',null,23),
+  (10,'pauline@gmail.com',null,'license','no_search','user','Po','Salmon','Pauline','Pauline',null,21)
+;
+
 
 
 
@@ -55,12 +71,21 @@ CREATE TABLE IF NOT EXISTS `network` (
   `IDnetwork` int(11) AUTO_INCREMENT,
   `IDuser1` int(11) NOT NULL,
   `IDuser2` int(11) NOT NULL,
-  `IDconv` int(11) NOT NULL,
   PRIMARY KEY(IDnetwork),
   foreign key (IDuser1) references user (IDuser) on delete cascade on update cascade,
   foreign key (IDuser2) references user (IDuser) on delete cascade on update cascade
 
   ) ;
+
+insert into network values
+  (1,1,2),(2,1,3),(3,1,5),(4,1,6),(5,1,7),(6,1,8),
+  (7,2,3),(8,2,4),(9,2,5),(10,2,9),
+  (11,3,4),(12,3,7),(13,3,8),(14,3,9),(15,3,10),
+  (16,4,7),(17,4,8),(18,4,9),
+  (19,5,6),(20,5,7),(21,5,10)
+  ;
+
+
 
 -- foreign key (IDconv) references conversation (IDconv) on delete cascade on update cascade
 
