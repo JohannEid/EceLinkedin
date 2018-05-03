@@ -2,25 +2,30 @@
 
 session_start();
 
-define('DB_ADRESS', 'localhost:8889');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'root');
-define('DB_DATABASE', 'meetece');
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "meetece";
 
-$db = mysqli_connect(DB_ADRESS,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-
-if (mysqli_connect_errno())
-{
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-
+echo "successfull connexion";
 // username and password sent from form
 
-$myusername = mysqli_real_escape_string($db,$_POST['email']);
-$mypassword = mysqli_real_escape_string($db,$_POST['password']);
+
+$myusername = $_POST['email'];
+$mypassword = $_POST['password'];
+
 
 $sql = "SELECT IDuser FROM user WHERE email = '$myusername' AND password = '$mypassword'";
-$result = mysqli_query($db,$sql);
+
+echo $sql;
+
+$result = $conn->query($sql);
 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 $active = $row['active'];
 $ID = $row["IDuser"];
@@ -32,14 +37,14 @@ $count = mysqli_num_rows($result);
 if($count == 1) {
     $_SESSION['login_user'] = $myusername;
     $_SESSION['id'] = $ID;
-
+    echo "success";
 
     header('Location: profile.php');
 }
 
 else
 {
-    $error = "Your Login Name or Password is invalid";
+    echo "Your Login Name or Password is invalid";
 }
 
 ?>
