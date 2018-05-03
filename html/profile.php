@@ -2,7 +2,7 @@
 session_start();
 $id =   $_SESSION['id'];
 $database = "meetece";
-$host = '127.0.0.1:8889';
+$host = 'localhost';
 $login = 'root';
 $passwordDTB = 'root';
 
@@ -41,9 +41,6 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
-
-
-
 ?>
 
 
@@ -67,11 +64,12 @@ $conn->close();
     <link rel="stylesheet" type="text/css" href="profile.css">
 
 
-    <script type="text/javascript" >
+    <script type="text/javascript"  >
+
+        alert("toto");
 
         var id= "<?php Print($ID); ?>";
         var email= "<?php Print($email); ?>";
-        var photo= "<?php Print($photo); ?>";
         var statute= "<?php Print($statute); ?>";
         var job= "<?php Print($job); ?>";
         var type= "<?php Print($type); ?>";
@@ -85,13 +83,11 @@ $conn->close();
 
         window.onload = function() {
 
+            alert(name + fname);
             document.getElementById("completeName").innerHTML = fname + " " + name;
             document.getElementById("details").innerHTML = "User: " + username + "   Mail: " + email;
         }
-
-
         alert(name + fname);
-
 
     </script>
 
