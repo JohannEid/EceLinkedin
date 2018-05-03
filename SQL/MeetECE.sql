@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `IDuser` int(16) AUTO_INCREMENT,
+  `IDuser` int(11) AUTO_INCREMENT,
   `email` varchar(100) NOT NULL,
   `photo` blob,
   `statue` enum('license','master','apprentice','school_employee') NOT NULL,
@@ -45,16 +45,16 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO user(IDuser,email,photo,statue,job_search,type,pseudo,name,firstname,password,photo_background,age)
 VALUES
-  (1,'thomas@gmail.com',null,'license','no_search','user','Tom','Cop','Thomas','Thomas',null,21),
-  (2,'johann@gmail.com',null,'master','no_search','user','Jo','Eid','Johann','Johann',null,21),
-  (3,'clement@gmail.com',null,'license','apprentice','user','Clem','Bail','Clement','Clement',null,22),
+  (1,'thomas@gmail.com',null,'license','internship_search','user','Tom','Cop','Thomas','Thomas',null,21),
+  (2,'johann@gmail.com',null,'master','internship_search','user','Jo','Eid','Johann','Johann',null,21),
+  (3,'clement@gmail.com',null,'license','internship_search','user','Clem','Bail','Clement','Clement',null,22),
   (4,'sophie@gmail.com',null,'school_employee','no_search','user','Soph','Lam','Sophie','Sophie',null,27),
   (5,'garance@gmail.com',null,'master','job_search','user','Gar','Lautre','Garance','Garance',null,24),
   (6,'julie@gmail.com',null,'license','internship_search','user','Jul','Dupont','Julie','Julie',null,23),
-  (7,'pierre@gmail.com',null,'license','no_search','user','Boloss','Berland','Pierre','Pierre',null,20),
-  (8,'myrna@gmail.com',null,'license','internship_search','user','lol','Wadi','Myrna','Myrna',null,21),
+  (7,'pierre@gmail.com',null,'license','internship_search','user','Boloss','Berland','Pierre','Pierre',null,20),
+  (8,'myrna@gmail.com',null,'license','apprentice','user','lol','Wadi','Myrna','Myrna',null,21),
   (9,'clara@gmail.com',null,'master','job_search','user','Cla','Tromelin','Clara','Clara',null,23),
-  (10,'pauline@gmail.com',null,'license','no_search','user','Po','Salmon','Pauline','Pauline',null,21)
+  (10,'pauline@gmail.com',null,'license','apprentice','user','Po','Salmon','Pauline','Pauline',null,21)
 ;
 
 
@@ -68,7 +68,7 @@ VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `network` (
-  `IDnetwork` int(11) AUTO_INCREMENT,
+  `IDnetwork` int(11) NOT NULL,
   `IDuser1` int(11) NOT NULL,
   `IDuser2` int(11) NOT NULL,
   PRIMARY KEY(IDnetwork),
@@ -87,20 +87,30 @@ insert into network values
 
 
 
--- foreign key (IDconv) references conversation (IDconv) on delete cascade on update cascade
-
 -- --------------------------------------------------------
 
+
 --
--- Structure de la table `conversation`
+-- Structure de la table `message`
 --
 
-CREATE TABLE IF NOT EXISTS `conversation` (
-  `IDconv` int(11) AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `message` (
+  `IDmessage` int(11) AUTO_INCREMENT,
   `IDnetwork` int(11) NOT NULL,
-  PRIMARY KEY(IDconv),
-  foreign key (IDnetwork) references network(IDnetwork) on delete cascade on update cascade
+  `text` text ,
+  `date` datetime ,
+  PRIMARY KEY(IDmessage),
+  foreign key (IDnetwork) references network (IDnetwork) on delete cascade on update cascade
 );
+
+insert into message values
+  (1,1,'Salut mec, comment tu vas','2018-05-04 10:08:00'),
+  (2,1,'Re, comment vas tu ?','2018-05-04 10:12:00'),
+  (3,1,'OUais de ouf ca va, tu fais quoi ce soir','2018-05-04 10:15:00'),
+  (4,1,'Rendez vous à 18h','2018-05-04 10:12:00'),
+  (5,2,'Bonjour, je vous contacte afin de fixer un horaire pour le prochain rendez-vous','2018-05-07 18:56:00'),
+  (6,3,'Je me presente, je suis ingénieur en systeme embarque','2018-05-06 07:31:00')
+  ;
 
 
 
@@ -119,8 +129,15 @@ CREATE TABLE IF NOT EXISTS `firm` (
   PRIMARY KEY(IDfirm)
 );
 
--- --------------------------------------------------------
+insert into firm values
+  (1,'Thales','Velizy',''),
+  (2,'Bitcoin','Pau',''),
+  (3,'Apple','Los Angeles',''),
+  (4,'Google','New York',''),
+  (5,'Dassault','Paris','')
+  ;
 
+-- --------------------------------------------------------
 
 
 --
@@ -134,10 +151,19 @@ CREATE TABLE IF NOT EXISTS `job` (
   `description` text NOT NULL,
   `lieu` varchar(100),
   `salary` int(11),
-  `time` time,
+  `time` varchar(15),
   PRIMARY KEY(IDjob),
   foreign key (IDfirm) references firm (IDfirm) on delete cascade on update cascade 
   ) ;
+
+insert into job values
+  (1,1,'Ingénieur en systeme embarqué','Recherche ingénieur dans la défense. Connaissance en systeme embarqué demandé','Velizy',3100,'3 mois'),
+  (2,2,'Ingénieur de systeme d information','Besoin d un ingénieur en systeme d information expert dans l abstarction','Paris',3500,'6 mois'),
+  (3,3,'Ingénieur commercial','Ingénieur d affaire capable de vendre des produits de merde à des prix ultra cher','Singapour',2800,'3 mois'),
+  (4,3,'Ingénieur financier','Ingénieur capable de déterminer les risques d un futur marché','Moscou',2100,'3 mois'),
+  (5,4,'Ingénieur prodige','Ingénieur capable de vendre pere et mere pour reussir','Bangkok',4000,'1 an'),
+  (6,5,'Ingénieur en systeme embarqué','Ingenieur ayant poour objectif de travailler sérieusement','Paris',3000,'6 mois');
+
 
 
 -- --------------------------------------------------------
@@ -154,6 +180,19 @@ CREATE TABLE IF NOT EXISTS `apply` (
   foreign key (IDuser) references user (IDuser) on delete cascade on update cascade,
   foreign key (IDjob) references job (IDjob) on delete cascade on update cascade
 );
+
+insert into apply values
+  (1,1),(1,4),(1,6),
+  (2,2),(2,5),
+  (3,2),(3,4),(3,5),
+  (5,5),(5,6),
+  (6,2),(6,4),
+  (7,1),(7,5),
+  (8,5),(8,2),
+  (9,2),(9,1),
+  (10,1)
+  ;
+
 
 -- --------------------------------------------------------
 
@@ -174,6 +213,16 @@ CREATE TABLE IF NOT EXISTS `publication` (
   foreign key (IDuser) references user (IDuser) on delete cascade on update cascade 
 );
 
+insert into publication values
+  (1,1,'Bonjour à tous, je viens de m inscire',null,null,'Paris','2018-05-03 13:15:00',0),
+  (2,1,'J adore ce reseau social',null,null,'Paris','2018-05-03 13:30:00',0),
+  (3,1,'Qui veut etre mon ami',null,null,'Paris','2018-05-03 14:15:00',0),
+  (4,2,'On peut faire tellement de rencontre',null,null,'Le Mans','2018-05-05 08:15:00',0),
+  (5,3,'Je suis joyeux',null,null,'Caen','2018-05-06 20:55:00',0),
+  (6,3,'Je suis un gros boloss',null,null,'Caen','2018-05-06 07:15:00',0)
+  ;
+
+
 -- --------------------------------------------------------
 
 --
@@ -191,6 +240,12 @@ CREATE TABLE IF NOT EXISTS `comment` (
   foreign key (IDuser) references user(IDuser) on delete cascade on update cascade
 );
 
+insert into comment values 
+  (1,2,2,'Moi Johann j adore aussi ce reseau social du turfu, c est vraiment un truc de ouf','2018-05-04 11:05:00'),
+  (2,3,3,'J aimerais tellement etre ton ami','2018-05-05 16:18:00'),
+  (3,3,2,'Moi aussi ;)','2018-05-05 17:15:00')
+  ;
+
 -- --------------------------------------------------------
 
 
@@ -199,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 -- Structure de la table `like`
 --
 
-CREATE TABLE IF NOT EXISTS `like` (
+CREATE TABLE IF NOT EXISTS `aime` (
   `IDlike` int(11) AUTO_INCREMENT,
   `IDpublication` int(11) NOT NULL,
   `IDuser` int(11) NOT NULL,
@@ -209,21 +264,14 @@ CREATE TABLE IF NOT EXISTS `like` (
   foreign key (IDuser) references user (IDuser) on delete cascade on update cascade 
   ) ;
 
+insert into aime values
+  (1,1,7,1),
+  (2,1,8,2),
+  (3,2,2,3),
+  (4,2,3,1)
+  ;
 
--- --------------------------------------------------------
 
---
--- Structure de la table `message`
---
-
-CREATE TABLE IF NOT EXISTS `message` (
-  `IDmessage` int(11) AUTO_INCREMENT,
-  `IDconv` int(11) NOT NULL,
-  `text` text ,
-  `date` datetime ,
-  PRIMARY KEY(IDmessage),
-  foreign key (IDconv) references conversation (IDconv) on delete cascade on update cascade
-);
 
 
 
@@ -236,11 +284,44 @@ CREATE TABLE IF NOT EXISTS `message` (
 
 CREATE TABLE IF NOT EXISTS `event` (
   `IDevent` int(11) AUTO_INCREMENT,
-  `IDnetwork` int(11) NOT NULL,
+  `IDuser` int(11) NOT NULL,
+  `intitule` text,
   `date` datetime,
   PRIMARY KEY(IDevent),
-  foreign key (IDnetwork) references network(IDnetwork) on delete cascade on update cascade
+  foreign key (IDuser) references user(IDuser) on delete cascade on update cascade
 );
+
+insert into event values 
+  (1,1,'Pot de passation','2018-05-12 17:30:00'),
+  (2,7,'Rattrapage de math','2018-05-17 15:30:00'),
+  (3,1,'Assemblée générale','2018-05-26 19:45:00')
+  ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `participation`
+--
+
+CREATE TABLE IF NOT EXISTS `participation` (
+  `IDparticipation` int(11) AUTO_INCREMENT,
+  `IDevent` int(11) NOT NULL,
+  `IDuser` int(11) NOT NULL,
+  PRIMARY KEY(IDparticipation),
+  foreign key (IDuser) references user (IDuser) on delete cascade on update cascade,
+  foreign key (IDevent) references event (IDevent) on delete cascade on update cascade 
+  );
+
+insert into participation values
+  (1,1,2),
+  (2,1,3),
+  (3,1,4),
+  (4,1,7),
+  (5,2,2),
+  (6,2,3)
+  ;
+
 
 
 
@@ -255,30 +336,18 @@ CREATE TABLE IF NOT EXISTS `event` (
 
 CREATE TABLE IF NOT EXISTS `notification` (
   `IDnotif` int(11) AUTO_INCREMENT,
-  `IDnetwork` int(11) NOT NULL,
+  `IDuser` int(11) NOT NULL,
   `text` text NOT NULL,
   `url` varchar(200),
   `date` datetime NOT NULL,
   `type` int(11),
   PRIMARY KEY(IDnotif),
-  foreign key (IDnetwork) references network (IDnetwork) on delete cascade on update cascade
+  foreign key (IDuser) references user (IDuser) on delete cascade on update cascade
   ) ;
 
-
--- --------------------------------------------------------
-
---
--- Structure de la table `participation`
---
-
-CREATE TABLE IF NOT EXISTS `participation` (
-  `IDparticipation` int(11) AUTO_INCREMENT,
-  `IDuser` int(11) NOT NULL,
-  `IDevent` int(11) NOT NULL,
-  PRIMARY KEY(IDparticipation),
-  foreign key (IDuser) references user (IDuser) on delete cascade on update cascade,
-  foreign key (IDevent) references event (IDevent) on delete cascade on update cascade 
-  );
+insert into notification values
+  (1,1,'Vous avez un nouveau message','lol','2018-05-04 10:08:00',1)
+  ;
 
 
 -- --------------------------------------------------------
