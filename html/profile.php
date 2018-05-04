@@ -1,4 +1,7 @@
 <?php
+include('user.php');
+include('publication.php');
+
 session_start();
 $id =   $_SESSION['id'];
 $database = "meetece";
@@ -13,42 +16,21 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT * FROM user WHERE IDuser =  '$id'";
-
-
 $sqlFriends = "SELECT t.* FROM user AS t INNER JOIN network AS tr ON (t.IDuser = tr.IDuser1 OR t.IDuser = tr.IDuser2) AND (tr.IDuser2 = '$id' OR tr.IDuser1 = '$id')";
+$sqlPublication = "SELECT t.* FROM publication AS t INNER JOIN network AS tr ON (t.IDuser = tr.IDuser1 OR t.IDuser = tr.IDuser2) AND (tr.IDuser2 = '$id' OR tr.IDuser1 = '$id')";
 
 
-$result = $conn->query($sql);
-$result1 = $conn->query($sqlFriends );
-
-
-
+$result =  $conn->query($sql);
+$result1 = $conn->query($sqlFriends);
+$result2 = $conn->query($sqlPublication);
 
 $array = array();
 
 
-class user
-{
-    public $id;
-    public $name;
-    public $firstname;
-    public $email;
-    public $photo;
-    public $photo_background;
-    public $statue;
-    public $job_research;
-    public $type;
-    public $pseudo;
-    public $age;
-
-}
-
 if ($result1->num_rows > 0)
 {
-
   while($row1 = $result1->fetch_assoc())
   {
-
 
          $user = new user;
 
@@ -64,9 +46,8 @@ if ($result1->num_rows > 0)
         $user->photo = $row1["photo"];
         $user->photo_background = $row1["photo_background"];
 
-      echo "<script>alert('$user->name')</script>";
 
-     if($user->id != $id) array_push($array, $user);
+      if($user->id != $id) array_push($array, $user);
   }
 }
 
@@ -77,8 +58,43 @@ $user2 = $array[1]->firstname . " ".   $array[1]->name ;
 $user3 = $array[2]->firstname . " ".   $array[2]->name ;
 $user4 = $array[3]->firstname . " ".   $array[3]->name ;
 
+$arrayPub = array();
 
+if ($result2->num_rows > 0)
+{
 
+    while($row2 = $result2->fetch_assoc())
+    {
+
+        $pub = new publication;
+
+        $pub->idPub = $row2["IDpublication"];
+        $pub->idUsr = $row2["IDuser"];
+        $pub->text = $row2["text"];
+        $pub->photo = $row2["photo"];
+        $pub->video = $row2["video"];
+        $pub->lieu = $row2["lieu"];
+        $pub->date = $row2["date"];
+        $pub->etat = $row2["etat"];
+
+        if($pub->idPub != $id) array_push($arrayPub, $pub);
+    }
+}
+
+$lieu1 = $arrayPub[0]->lieu ;
+$lieu2 = $arrayPub[1]->lieu ;
+$lieu3 = $arrayPub[2]->lieu ;
+$lieu4 = $arrayPub[3]->lieu ;
+
+$text1 = $arrayPub[0]->text ;
+$text2 = $arrayPub[1]->text ;
+$text3 = $arrayPub[2]->text ;
+$text4 = $arrayPub[3]->text ;
+
+$desc1 = $arrayPub[0]->date . " " . $arrayPub[0]->lieu ;
+$desc2 = $arrayPub[1]->date . " " . $arrayPub[1]->lieu ;
+$desc3 = $arrayPub[2]->date . " " . $arrayPub[2]->lieu ;
+$desc4 = $arrayPub[3]->date . " " . $arrayPub[3]->lieu ;
 
 if ($result->num_rows > 0) {
   // output data of each row
@@ -125,8 +141,6 @@ $conn->close();
 
   <script type="text/javascript"  >
 
-      alert("toto");
-
       var id= "<?php Print($ID); ?>";
       var email= "<?php Print($email); ?>";
       var statute= "<?php Print($statute); ?>";
@@ -143,6 +157,15 @@ $conn->close();
       var user2= "<?php Print($user2); ?>";
       var user3= "<?php Print($user3); ?>";
       var user4= "<?php Print($user4); ?>";
+      var text1= "<?php Print($text1); ?>";
+      var text2= "<?php Print($text2); ?>";
+      var text3= "<?php Print($text3); ?>";
+      var text4= "<?php Print($text4); ?>";
+      var desc1= "<?php Print($desc1); ?>";
+      var desc2= "<?php Print($desc2); ?>";
+      var desc3= "<?php Print($desc3); ?>";
+      var desc4= "<?php Print($desc4); ?>";
+
 
 
 
@@ -155,17 +178,17 @@ $conn->close();
           document.getElementById("username2").innerHTML = user2;
           document.getElementById("username3").innerHTML = user3;
           document.getElementById("username4").innerHTML = user4;
-
-          alert(user1);
-          alert(user2);
-          alert(user3);
-          alert(user4);
-
-
-
+          document.getElementById("text1").innerHTML = text1;
+          document.getElementById("text2").innerHTML = text2;
+          document.getElementById("text3").innerHTML = text3;
+          document.getElementById("text4").innerHTML = text4;
+          document.getElementById("desc1").innerHTML = desc1;
+          document.getElementById("desc2").innerHTML = desc2;
+          document.getElementById("desc3").innerHTML = desc3;
+          document.getElementById("desc4").innerHTML = desc4;
       }
 
-  </script>s
+  </script>
 
 </head>
 <body>
@@ -203,15 +226,6 @@ $conn->close();
 
   </div>
 </nav>
-
-
-
-
-
-
-
-
-
 
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -284,24 +298,15 @@ $conn->close();
                   <div class="media">
                       <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
                       <div class="media-body">
-                          <h4 class="media-heading">Lucky Sans</h4>
-                          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </div>
+                          <h4 class="desc3" name = "desc3" id ="desc3" type="text"><br>
+                              <small><i class="fa fa-clock-o"></i> </small> </h4>
+                          <p class="text3"><label type="text" id="text3" name="text3" ></p></div>
                   </div>
-                  <div class="media">
-                      <div class="media-left"> <a href="javascript:void(0)">
-                              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
-                      <div class="media-body">
-                          <h4 class="media-heading">John Doe</h4>
-                          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </div>
-                  </div>
+
               </div>
               <div class="clearfix"></div>
           </div>
           <div class="panel panel-default">
-              <div class="panel-heading">
-                  <h1 class="page-header small">Recently Connected</h1>
-                  <p class="page-subtitle small">You have recemtly connected with 34 friends</p>
-              </div>
               <div class="col-md-12">
                   <div class="memberblock"> <a href="" clss="member"> <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
                       </a> <a href="" class="member"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
@@ -349,9 +354,9 @@ $conn->close();
                   <div class="media">
                       <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="media-object"> </a> </div>
                       <div class="media-body">
-                          <h4 class="media-heading">Lucky Sans<br>
-                              <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
+                          <h4 class="desc1" name = "desc1" id ="desc1" type="text">Lucky Sans<br>
+                              <small><i class="fa fa-clock-o"></i> </small> </h4>
+                          <p class="text1"><label type="text" id="text1" name="text1" ></p>
 
                           <ul class="nav nav-pills pull-left ">
                               <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
@@ -365,22 +370,9 @@ $conn->close();
                   <div class="media">
                       <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
                       <div class="media-body">
-                          <h4 class="media-heading">Astha Smith</h4>
-                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                      </div>
-                  </div>
-                  <div class="media">
-                      <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
-                      <div class="media-body">
-                          <h4 class="media-heading">Lucky Sans</h4>
-                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
-                          <div class="media">
-                              <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
-                              <div class="media-body">
-                                  <h4 class="media-heading">Astha Smith</h4>
-                                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                              </div>
-                          </div>
+                          <h4 class="desc1" name = "desc2" id ="desc2" type="text">Lucky Sans<br>
+                              <small><i class="fa fa-clock-o"></i> </small> </h4>
+                          <p class="text2"><label type="text" id="text2" name="text2" ></p>
                       </div>
                   </div>
               </div>
@@ -397,9 +389,9 @@ $conn->close();
                   <div class="media">
                       <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
                       <div class="media-body">
-                          <h4 class="media-heading"> Lucky Sans<br>
-                              <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
+                          <h4 class="desc1" name = "desc4" id ="desc4" type="text">Lucky Sans<br>
+                              <small><i class="fa fa-clock-o"></i> </small> </h4>
+                          <p class="text2"><label type="text" id="text4" name="text4" ></p>
                           <ul class="nav nav-pills pull-left ">
                               <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
                               <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
@@ -409,20 +401,7 @@ $conn->close();
                   </div>
               </div>
               <div class="col-md-12 border-top">
-                  <div class="status-upload">
-                      <form>
-                          <label>Comment</label>
-                          <textarea class="form-control" placeholder="Comment here"></textarea>
-                          <br>
-                          <ul class="nav nav-pills pull-left ">
-                              <li><a title=""><i class="glyphicon glyphicon-bullhorn"></i></a></li>
-                              <li><a title=""><i class=" glyphicon glyphicon-facetime-video"></i></a></li>
-                              <li><a title=""><i class="glyphicon glyphicon-picture"></i></a></li>
-                          </ul>
-                          <button type="submit" class="btn btn-success pull-right"> Comment</button>
-                      </form>
-                  </div>
-                  <!-- Status Upload  -->
+
 
               </div>
           </div>
@@ -434,37 +413,7 @@ $conn->close();
                       <li><a href="javascript:void(0)">Report</a></li>
                   </ul>
               </div>
-              <div class="col-md-12">
-                  <div class="media">
-                      <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
-                      <div class="media-body">
-                          <h4 class="media-heading"> Lucky Sans<br>
-                              <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
-                          <ul class="nav nav-pills pull-left ">
-                              <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                              <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                              <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-12 commentsblock border-top">
-                  <div class="media">
-                      <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
-                      <div class="media-body">
-                          <h4 class="media-heading">Astha Smith</h4>
-                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
-                          <div class="media">
-                              <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
-                              <div class="media-body">
-                                  <h4 class="media-heading">Nested Lucky Sans</h4>
-                                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+
           </div>
           <div class="panel panel-default">
               <div class="btn-group pull-right postbtn">
@@ -474,21 +423,6 @@ $conn->close();
                       <li><a href="javascript:void(0)">Report</a></li>
                   </ul>
               </div>
-              <div class="col-md-12">
-                  <div class="media">
-                      <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
-                      <div class="media-body">
-                          <h4 class="media-heading"> Lucky Sans<br>
-                              <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
-                          <ul class="nav nav-pills pull-left ">
-                              <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                              <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                              <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
           </div>
           <div class="panel panel-default">
               <div class="btn-group pull-right postbtn">
@@ -497,21 +431,6 @@ $conn->close();
                       <li><a href="javascript:void(0)">Hide this</a></li>
                       <li><a href="javascript:void(0)">Report</a></li>
                   </ul>
-              </div>
-              <div class="col-md-12">
-                  <div class="media">
-                      <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
-                      <div class="media-body">
-                          <h4 class="media-heading"> Lucky Sans<br>
-                              <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
-                          <ul class="nav nav-pills pull-left ">
-                              <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                              <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                              <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
-                          </ul>
-                      </div>
-                  </div>
               </div>
           </div>
       </div>
