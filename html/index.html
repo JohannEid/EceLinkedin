@@ -27,11 +27,11 @@
                 $(this).addClass('active');
             }).on('slid.bs.carousel', function(e) {
                 if(!bouton) {
-                    var count = $('.list-group').children().length -1;
-                    var current = $('.list-group li.active');
-                    current.removeClass('active').next().addClass('active');
-                    var id = parseInt(current.data('slide-to'));
-                    if(count == id) {
+                    var val = $('.list-group').children().length -1;
+                    var courant = $('.list-group li.active');
+                    courant.removeClass('active').next().addClass('active');
+                    var id = parseInt(courant.data('slide-to'));
+                    if(val == id) {
                         $('.list-group li').first().addClass('active');
                     }
                 }
@@ -40,10 +40,10 @@
         })
 
         $(window).load(function() {
-            var boxheight = $('#myCarousel .carousel-inner').innerHeight();
-            var itemlength = $('#myCarousel .item').length;
-            var triggerheight = Math.round(boxheight/itemlength+1);
-            $('#myCarousel .list-group-item').outerHeight(triggerheight);
+            var box = $('#myCarousel .carousel-inner').innerHeight();
+            var item = $('#myCarousel .item').length;
+            var courant = Math.round(box/item+1);
+            $('#myCarousel .list-group-item').outerHeight(courant);
         });
     </script>
 
@@ -90,13 +90,14 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row">
-
+        <!-- Code de la barre de partage tout en haut -->
         <div>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="status-upload nopaddingbtm">
+                        <h3>What's up</h3><br>
                         <form>
-                            <textarea class="form-control" placeholder="What are you doing right now?"></textarea>
+                            <textarea class="form-control" placeholder="Something to share ?"></textarea>
                             <br>
                             <ul class="nav nav-pills pull-left ">
                                 <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="glyphicon glyphicon-picture"></i></a></li>
@@ -105,25 +106,27 @@
                             <button type="submit" class="btn btn-success pull-right"> Share</button>
                         </form>
                     </div>
-                    <!-- Status Upload  -->
                 </div>
             </div>
 
-            <center><h1>Newsfeed</h1></center>
+            <!--Title-->
+            <center><h1 style="color:#ff3399">Newsfeed</h1></center>
 
+            <!--Information d'une publication
+                Photo + information + mention like et comment-->
             <div class="panel panel-default">
                 <div>
                     <div class="media">
                         <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
                         <div class="media-body">
-                            <h4 class="media-heading">Lucky Sans<br>
+                            <h4 class="media-heading">Clement de Baillencourt<br>
                                 <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
+                            <p> Voici mon arrive dans ce reseau social </p>
 
                             <ul class="nav nav-pills pull-left ">
-                                <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
+                                <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 4</a></li>
                                 <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                                <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
+                                <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 10</a></li>
                             </ul>
                         </div>
                     </div>
@@ -131,12 +134,12 @@
                     <div class="status-upload">
                         <form>
                             <label>Comment</label>
-                            <textarea class="form-control" placeholder="Comment here"></textarea>
+                            <textarea class="form-control" placeholder="What do you want to comment ?"></textarea>
                             <br>
                             <ul class="nav nav-pills pull-left ">
                                 <li><a title=""><i class="glyphicon glyphicon-picture"></i></a></li>
                             </ul>
-                            <button type="submit" class="btn btn-success pull-right"> Comment</button>
+                            <button type="submit" class="btn btn-success pull-right"> Comment </button>
                             <br>
                         </form>
                     </div>
@@ -148,23 +151,23 @@
                 <div class="media">
                     <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
                     <div class="media-body">
-                        <h4 class="media-heading">Astha Smith</h4>
-                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                        <h4 class="media-heading">Sacha Pokemon</h4>
+                        <p>J'ai un meeting demain à la tour eiffel avec le president, qui veut me rejoindre </p>
                         <ul class="nav nav-pills pull-left ">
-                            <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                            <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                            <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
+                            <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2</a></li>
+                            <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 0</a></li>
+                            <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 1</a></li>
                         </ul>
                     </div>
                     <div class="status-upload">
                         <form>
                             <label>Comment</label>
-                            <textarea class="form-control" placeholder="Comment here"></textarea>
+                            <textarea class="form-control" placeholder="What do you want to comment ?"></textarea>
                             <br>
                             <ul class="nav nav-pills pull-left ">
                                 <li><a title=""><i class="glyphicon glyphicon-picture"></i></a></li>
                             </ul>
-                            <button type="submit" class="btn btn-success pull-right"> Comment</button>
+                            <button type="submit" class="btn btn-success pull-right"> Comment </button>
                             <br>
                         </form>
                     </div>
@@ -173,22 +176,22 @@
                     <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
                     <div class="media-body">
                         <h4 class="media-heading">Thomas Cop</h4>
-                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
+                        <p> J'ai un entretien d'embauche, souhaitez-moi bonne chance </p>
                         <ul class="nav nav-pills pull-left ">
-                            <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                            <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
+                            <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 100</a></li>
+                            <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 45</a></li>
                             <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
                         </ul>
                     </div>
                     <div class="status-upload">
                         <form>
                             <label>Comment</label>
-                            <textarea class="form-control" placeholder="Comment here"></textarea>
+                            <textarea class="form-control" placeholder="What do you want to comment ?"></textarea>
                             <br>
                             <ul class="nav nav-pills pull-left ">
                                 <li><a title=""><i class="glyphicon glyphicon-picture"></i></a></li>
                             </ul>
-                            <button type="submit" class="btn btn-success pull-right"> Comment</button>
+                            <button type="submit" class="btn btn-success pull-right"> Comment </button>
                             <br>
                         </form>
                     </div>

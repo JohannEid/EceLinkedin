@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3532db68-8797-45ec-b990-d87ebffe8d76" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQL/MeetECE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SQL/MeetECE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +18,29 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+            <state relative-caret-position="221">
+              <caret line="112" column="44" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="44" />
+              <folding>
+                <element signature="n#style#0;n#h1#0;n#center#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="88" selection-start-line="88" selection-end-line="93" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -107,6 +128,7 @@
         <option value="$PROJECT_DIR$/css/jobs.css" />
         <option value="$PROJECT_DIR$/html/Config.php" />
         <option value="$PROJECT_DIR$/html/messenger.html" />
+        <option value="$PROJECT_DIR$/css/index.css" />
         <option value="$PROJECT_DIR$/html/index.html" />
       </list>
     </option>
@@ -153,11 +175,6 @@
             <path>
               <item name="EceLinkedin" type="b2602c69:ProjectViewProjectNode" />
               <item name="EceLinkedin" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EceLinkedin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EceLinkedin" type="462c0819:PsiDirectoryNode" />
               <item name="html" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -184,11 +201,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Thomas\Documents\ECE\ING 3\Semestre 2\Projet Web\EceLinkedin\css" />
       <recent name="C:\Users\Thomas\Documents\ECE\ING 3\Semestre 2\Projet Web\EceLinkedin\html" />
       <recent name="$PROJECT_DIR$/SQL" />
       <recent name="$PROJECT_DIR$/css" />
       <recent name="$PROJECT_DIR$/html" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
@@ -361,7 +378,7 @@
       <workItem from="1525358282075" duration="13000" />
       <workItem from="1525358342370" duration="807000" />
       <workItem from="1525360768356" duration="4917000" />
-      <workItem from="1525423778321" duration="4303000" />
+      <workItem from="1525423778321" duration="6757000" />
     </task>
     <task id="LOCAL-00001" summary="Blindage saisies &quot;sign up&quot;">
       <created>1525108311352</created>
@@ -440,14 +457,21 @@
       <option name="project" value="LOCAL" />
       <updated>1525365089771</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Insertion d'user et d'un réseau manuellement">
+      <created>1525430427082</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1525430427082</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44450000" />
+    <option name="totallyTimeSpent" value="46904000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1902834" />
@@ -493,13 +517,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Insertion d'user et d'un réseau manuellement" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/html/network.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/signup.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -714,13 +731,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/profile.css" />
     <entry file="file://$PROJECT_DIR$/html/profile.html" />
-    <entry file="file://$PROJECT_DIR$/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/jobs.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -813,10 +823,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="88" selection-start-line="88" selection-end-line="93" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+        <state relative-caret-position="221">
+          <caret line="112" column="44" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#center#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
