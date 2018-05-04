@@ -15,5 +15,4 @@ class jobs
     public $lieu;
     public $salaire;
     public $temps;
-
 }

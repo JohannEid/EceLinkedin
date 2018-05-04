@@ -12,7 +12,7 @@ session_start();
 $id = $_SESSION['id'];
 
 $database = "meetece";
-$host = '127.0.0.1:8889';
+$host = 'localhost';
 $login = 'root';
 $passwordDTB = 'root';
 

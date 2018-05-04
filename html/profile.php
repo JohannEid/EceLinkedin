@@ -116,6 +116,10 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
+
+
+
+
 ?>
 
 
@@ -203,7 +207,7 @@ $conn->close();
       <ul class="nav navbar-nav">
           <li><a href="index.html">Home</a></li>
           <li class="active"><a href="profile.php">Profile</a></li>
-          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="jobs.php">Jobs</a></li>
           <li><a href="messenger.html">Messenger</a></li>
           <li><a href="network.html">Network</a></li>
           <li><a href="notification.html">Notifications</a></li>
@@ -289,23 +293,7 @@ $conn->close();
               </div>
               <div class="clearfix"></div>
           </div>
-          <div class="panel panel-default">
-              <div class="panel-heading">
-                  <h1 class="page-header small">What others are saying </h1>
-                  <p class="page-subtitle small">Express your self, Express to other</p>
-              </div>
-              <div class="col-md-12">
-                  <div class="media">
-                      <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
-                      <div class="media-body">
-                          <h4 class="desc3" name = "desc3" id ="desc3" type="text"><br>
-                              <small><i class="fa fa-clock-o"></i> </small> </h4>
-                          <p class="text3"><label type="text" id="text3" name="text3" ></p></div>
-                  </div>
 
-              </div>
-              <div class="clearfix"></div>
-          </div>
           <div class="panel panel-default">
               <div class="col-md-12">
                   <div class="memberblock"> <a href="" clss="member"> <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
@@ -328,15 +316,15 @@ $conn->close();
           <div class="panel panel-default">
               <div class="panel-body">
                   <div class="status-upload nopaddingbtm">
-                      <form>
-                          <textarea class="form-control" placeholder="What are you doing right now?"></textarea>
+                      <form method="get" action = "publcation.php">
+                          <textarea class="form-control" placeholder="What are you doing right now?" name="publish" id="publish"> </textarea>
                           <br>
                           <ul class="nav nav-pills pull-left ">
                               <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="glyphicon glyphicon-bullhorn"></i></a></li>
                               <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class=" glyphicon glyphicon-facetime-video"></i></a></li>
                               <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="glyphicon glyphicon-picture"></i></a></li>
                           </ul>
-                          <button type="submit" class="btn btn-success pull-right"> Share</button>
+                          <input type="submit"  value="Share" />
                       </form>
                   </div>
                   <!-- Status Upload  -->
@@ -354,7 +342,7 @@ $conn->close();
                   <div class="media">
                       <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="media-object"> </a> </div>
                       <div class="media-body">
-                          <h4 class="desc1" name = "desc1" id ="desc1" type="text">Lucky Sans<br>
+                          <h4 class="desc1" name = "desc1" id ="desc1" type="text">
                               <small><i class="fa fa-clock-o"></i> </small> </h4>
                           <p class="text1"><label type="text" id="text1" name="text1" ></p>
 
@@ -370,10 +358,28 @@ $conn->close();
                   <div class="media">
                       <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
                       <div class="media-body">
-                          <h4 class="desc1" name = "desc2" id ="desc2" type="text">Lucky Sans<br>
+                          <h4 class="desc1" name = "desc2" id ="desc2" type="text">
                               <small><i class="fa fa-clock-o"></i> </small> </h4>
                           <p class="text2"><label type="text" id="text2" name="text2" ></p>
                       </div>
+                  </div>
+              </div>
+              <div class="col-md-12 commentsblock border-top">
+                  <div class="media">
+                      <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="media-object"> </a> </div>
+                      <div class="media-body">
+                          <h4 class="desc1" name = "desc4" id ="desc4" type="text">Lucky Sans<br>
+                              <small><i class="fa fa-clock-o"></i> </small> </h4>
+                          <p class="text2"><label type="text" id="text4" name="text4" ></p>
+                      </div>
+                  </div>
+
+                  <div class="media">
+                      <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
+                      <div class="media-body">
+                          <h4 class="desc3" name = "desc3" id ="desc3" type="text"><br>
+                              <small><i class="fa fa-clock-o"></i> </small> </h4>
+                          <p class="text3"><label type="text" id="text3" name="text3" ></p></div>
                   </div>
               </div>
           </div>
@@ -389,9 +395,6 @@ $conn->close();
                   <div class="media">
                       <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
                       <div class="media-body">
-                          <h4 class="desc1" name = "desc4" id ="desc4" type="text">Lucky Sans<br>
-                              <small><i class="fa fa-clock-o"></i> </small> </h4>
-                          <p class="text2"><label type="text" id="text4" name="text4" ></p>
                           <ul class="nav nav-pills pull-left ">
                               <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
                               <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
@@ -401,8 +404,6 @@ $conn->close();
                   </div>
               </div>
               <div class="col-md-12 border-top">
-
-
               </div>
           </div>
           <div class="panel panel-default">
@@ -436,16 +437,5 @@ $conn->close();
       </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
