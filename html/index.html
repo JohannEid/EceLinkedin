@@ -14,18 +14,19 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel = "stylesheet" type="text/css" href="../css/index.css">
 
+
     <script>
         $(document).ready(function(){
 
-            var clickEvent = false;
+            var bouton = false;
             $('#myCarousel').carousel({
                 interval:   4000
             }).on('click', '.list-group li', function() {
-                clickEvent = true;
+                bouton = true;
                 $('.list-group li').removeClass('active');
                 $(this).addClass('active');
             }).on('slid.bs.carousel', function(e) {
-                if(!clickEvent) {
+                if(!bouton) {
                     var count = $('.list-group').children().length -1;
                     var current = $('.list-group li.active');
                     current.removeClass('active').next().addClass('active');
@@ -34,7 +35,7 @@
                         $('.list-group li').first().addClass('active');
                     }
                 }
-                clickEvent = false;
+                bouton = false;
             });
         })
 
@@ -111,7 +112,6 @@
             <center><h1>Newsfeed</h1></center>
 
             <div class="panel panel-default">
-
                 <div>
                     <div class="media">
                         <div class="media-left"> <a href="javascript:void(0)"> <img alt="64x64" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
@@ -127,20 +127,20 @@
                             </ul>
                         </div>
                     </div>
-                    <div>
-                        <div class="status-upload">
-                            <form>
-                                <label>Comment</label>
-                                <textarea class="form-control" placeholder="Comment here"></textarea>
-                                <br>
-                                <ul class="nav nav-pills pull-left ">
-                                    <li><a title=""><i class="glyphicon glyphicon-picture"></i></a></li>
-                                </ul>
-                                <button type="submit" class="btn btn-success pull-right"> Comment</button>
-                                <br>
-                            </form>
-                        </div>
+
+                    <div class="status-upload">
+                        <form>
+                            <label>Comment</label>
+                            <textarea class="form-control" placeholder="Comment here"></textarea>
+                            <br>
+                            <ul class="nav nav-pills pull-left ">
+                                <li><a title=""><i class="glyphicon glyphicon-picture"></i></a></li>
+                            </ul>
+                            <button type="submit" class="btn btn-success pull-right"> Comment</button>
+                            <br>
+                        </form>
                     </div>
+
                 </div>
                 <br>
             </div>
@@ -150,6 +150,23 @@
                     <div class="media-body">
                         <h4 class="media-heading">Astha Smith</h4>
                         <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                        <ul class="nav nav-pills pull-left ">
+                            <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
+                            <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
+                            <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
+                        </ul>
+                    </div>
+                    <div class="status-upload">
+                        <form>
+                            <label>Comment</label>
+                            <textarea class="form-control" placeholder="Comment here"></textarea>
+                            <br>
+                            <ul class="nav nav-pills pull-left ">
+                                <li><a title=""><i class="glyphicon glyphicon-picture"></i></a></li>
+                            </ul>
+                            <button type="submit" class="btn btn-success pull-right"> Comment</button>
+                            <br>
+                        </form>
                     </div>
                 </div>
                 <div class="media">
@@ -157,28 +174,27 @@
                     <div class="media-body">
                         <h4 class="media-heading">Thomas Cop</h4>
                         <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. </p>
-
+                        <ul class="nav nav-pills pull-left ">
+                            <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
+                            <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
+                            <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <div class="media">
-                        <div class="media-left"> <a href="javascript:void(0)"> <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="media-object"> </a> </div>
-                        <div class="media-body">
-                            <h4 class="media-heading"> Richar Loeur<br>
-                                <small><i class="fa fa-clock-o"></i> Yesterday, 2:00 am</small> </h4>
-                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio. </p>
+                    <div class="status-upload">
+                        <form>
+                            <label>Comment</label>
+                            <textarea class="form-control" placeholder="Comment here"></textarea>
+                            <br>
                             <ul class="nav nav-pills pull-left ">
-                                <li><a href="" title=""><i class="glyphicon glyphicon-thumbs-up"></i> 2015</a></li>
-                                <li><a href="" title=""><i class=" glyphicon glyphicon-comment"></i> 25</a></li>
-                                <li><a href="" title=""><i class="glyphicon glyphicon-share-alt"></i> 15</a></li>
+                                <li><a title=""><i class="glyphicon glyphicon-picture"></i></a></li>
                             </ul>
-                        </div>
+                            <button type="submit" class="btn btn-success pull-right"> Comment</button>
+                            <br>
+                        </form>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
 </div>

@@ -109,7 +109,7 @@ insert into message values
   (3,1,'OUais de ouf ca va, tu fais quoi ce soir','2018-05-04 10:15:00'),
   (4,1,'Rendez vous à 18h','2018-05-04 10:12:00'),
   (5,2,'Bonjour, je vous contacte afin de fixer un horaire pour le prochain rendez-vous','2018-05-07 18:56:00'),
-  (6,3,'Je me presente, je suis ingénieur en systeme embarque','2018-05-06 07:31:00')
+  (6,3,'Je me presente, je suis ingenieur en systeme embarque','2018-05-06 07:31:00')
   ;
 
 
@@ -157,12 +157,12 @@ CREATE TABLE IF NOT EXISTS `job` (
   ) ;
 
 insert into job values
-  (1,1,'Ingénieur en systeme embarqué','Recherche ingénieur dans la défense. Connaissance en systeme embarqué demandé','Velizy',3100,'3 mois'),
-  (2,2,'Ingénieur de systeme d information','Besoin d un ingénieur en systeme d information expert dans l abstarction','Paris',3500,'6 mois'),
-  (3,3,'Ingénieur commercial','Ingénieur d affaire capable de vendre des produits de merde à des prix ultra cher','Singapour',2800,'3 mois'),
-  (4,3,'Ingénieur financier','Ingénieur capable de déterminer les risques d un futur marché','Moscou',2100,'3 mois'),
-  (5,4,'Ingénieur prodige','Ingénieur capable de vendre pere et mere pour reussir','Bangkok',4000,'1 an'),
-  (6,5,'Ingénieur en systeme embarqué','Ingenieur ayant poour objectif de travailler sérieusement','Paris',3000,'6 mois');
+  (1,1,'Ingenieur en systeme embarque','Recherche ingenieur dans la defense. Connaissance en systeme embarque demande','Velizy',3100,'3 mois'),
+  (2,2,'Ingenieur de systeme d information','Besoin d un ingenieur en systeme d information expert dans l abstarction','Paris',3500,'6 mois'),
+  (3,3,'Ingenieur commercial','Ingenieur d affaire capable de vendre des produits de merde à des prix ultra cher','Singapour',2800,'3 mois'),
+  (4,3,'Ingenieur financier','Ingenieur capable de determiner les risques d un futur marche','Moscou',2100,'3 mois'),
+  (5,4,'Ingenieur prodige','Ingenieur capable de vendre pere et mere pour reussir','Bangkok',4000,'1 an'),
+  (6,5,'Ingenieur en systeme embarque','Ingenieur ayant poour objectif de travailler serieusement','Paris',3000,'6 mois');
 
 
 
@@ -294,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `event` (
 insert into event values 
   (1,1,'Pot de passation','2018-05-12 17:30:00'),
   (2,7,'Rattrapage de math','2018-05-17 15:30:00'),
-  (3,1,'Assemblée générale','2018-05-26 19:45:00')
+  (3,1,'Assemblee generale','2018-05-26 19:45:00')
   ;
 
 

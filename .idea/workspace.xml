@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3532db68-8797-45ec-b990-d87ebffe8d76" name="Default" comment="Insertion d'user et d'un réseau manuellement">
+    <list default="true" id="3532db68-8797-45ec-b990-d87ebffe8d76" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/Config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQL/MeetECE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SQL/MeetECE.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +18,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="151" column="43" selection-start-line="151" selection-start-column="43" selection-end-line="151" selection-end-column="43" />
+            <state relative-caret-position="323">
+              <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -27,7 +27,7 @@
       <file leaf-file-name="messenger.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/messenger.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="238">
               <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
@@ -36,8 +36,8 @@
       <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1207">
-              <caret line="410" column="33" selection-start-line="410" selection-start-column="33" selection-end-line="410" selection-end-column="33" />
+            <state relative-caret-position="6834">
+              <caret line="402" column="33" selection-start-line="402" selection-start-column="33" selection-end-line="402" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -47,15 +47,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signup.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/signup.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -132,6 +123,7 @@
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
     <include_path>
       <path value="/usr/share/php" />
+      <path value="$PROJECT_DIR$/.." />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -146,7 +138,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -169,15 +160,11 @@
               <item name="EceLinkedin" type="462c0819:PsiDirectoryNode" />
               <item name="html" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="EceLinkedin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EceLinkedin" type="462c0819:PsiDirectoryNode" />
-              <item name="php" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -218,7 +205,13 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/php.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/index.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/messenger.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/network.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/notification.html</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/html/profile.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/user.php</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -226,7 +219,10 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/user.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/jobs.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/jobsC.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/publication.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/signup.php</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -234,6 +230,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/jobs.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/php/signup.php</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -362,7 +360,8 @@
       <workItem from="1525357702977" duration="470000" />
       <workItem from="1525358282075" duration="13000" />
       <workItem from="1525358342370" duration="807000" />
-      <workItem from="1525360768356" duration="4268000" />
+      <workItem from="1525360768356" duration="4917000" />
+      <workItem from="1525423778321" duration="4303000" />
     </task>
     <task id="LOCAL-00001" summary="Blindage saisies &quot;sign up&quot;">
       <created>1525108311352</created>
@@ -434,33 +433,40 @@
       <option name="project" value="LOCAL" />
       <updated>1525349506127</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Insertion d'user et d'un réseau manuellement">
+      <created>1525365089771</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1525365089771</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39498000" />
+    <option name="totallyTimeSpent" value="44450000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
     <editor active="true" />
     <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1902834" />
       <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="PHP-CGI Server" order="8" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3283582" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.32820514" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32923076" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18704453" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32923076" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="PHP-CGI Server" order="8" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32923076" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
@@ -789,28 +795,28 @@
     <entry file="file://$PROJECT_DIR$/php/signup.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/messenger.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="238">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
-          <caret line="410" column="33" selection-start-line="410" selection-start-column="33" selection-end-line="410" selection-end-column="33" />
+        <state relative-caret-position="6834">
+          <caret line="402" column="33" selection-start-line="402" selection-start-column="33" selection-end-line="402" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="151" column="43" selection-start-line="151" selection-start-column="43" selection-end-line="151" selection-end-column="43" />
+        <state relative-caret-position="323">
+          <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
         </state>
       </provider>
     </entry>
