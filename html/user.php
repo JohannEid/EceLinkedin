@@ -8,8 +8,8 @@
 
 class user
 {
-    public $name;
     public $id;
+    public $name;
     public $firstname;
     public $email;
     public $photo;
@@ -21,3 +21,4 @@ class user
     public $age;
 
 }
+
