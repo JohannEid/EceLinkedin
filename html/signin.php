@@ -25,7 +25,8 @@ $sql = "SELECT IDuser FROM user WHERE email = '$myusername' AND password = '$myp
 
 echo $sql;
 
-$result = $conn->query($sql);
+$result = $conn->query(
+$sql);
 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 $active = $row['active'];
 $ID = $row["IDuser"];
@@ -34,11 +35,11 @@ $count = mysqli_num_rows($result);
 
 
 // If result matched $myusername and $mypassword, table row must be 1 row
-if($count == 1) {
+if($count == 1)
+{
     $_SESSION['login_user'] = $myusername;
     $_SESSION['id'] = $ID;
     echo "success";
-
     header('Location: profile.php');
 }
 

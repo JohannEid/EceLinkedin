@@ -4,12 +4,15 @@ include 'jobsC.php';
 session_start();
 $id = $_SESSION['id'];
 
-$database = "meetece";
-$host = '127.0.0.1:8889';
-$login = 'root';
-$passwordDTB = 'root';
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "meetece";
 
-$conn = new mysqli($host, $login, $passwordDTB, $database);
+
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

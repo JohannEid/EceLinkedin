@@ -224,7 +224,7 @@ $conn->close();
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li><a href="signin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
 
